@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Background Image Example</title>
+</head>
+<body>
+    <div class="background-image"></div>
+    
+    <!-- Your other content here -->
+    <button id="answer">
+        <p>where's waldo?</p>
+    </button>
+
+    <div id="modal-container">
+        
+        <div id="modal">
+            <p>you found waldo!</p>
+        </div>
+        <div id="close-btn">&times;</div>
+        
+    </div>
+
+    <div class='waldo-answer'>
+        <img src="../project2/pics/Waldo.svg">
+    </div> 
+
+    <!-- script -->
+    <script>
+        const answerButton = document.getElementById('answer');
+        const backgroundImage = document.querySelector('.background-image');
+        const hiddenWaldo = document.querySelector('.waldo-answer img');
+    
+        answerButton.addEventListener('click', () => {
+            answerButton.classList.toggle('active');
+            backgroundImage.classList.toggle('active');
+            
+            if (answerButton.classList.contains('active')) {
+                backgroundImage.style.opacity = '0.3';
+                hiddenWaldo.style.opacity = '1.0';
+            } else {
+                backgroundImage.style.opacity = '1.0';
+                hiddenWaldo.style.opacity = '0.0';
+            }
+        });
+    
+        backgroundImage.addEventListener('click', () => {
+            if (backgroundImage.classList.contains('active')) {
+                answerButton.classList.remove('active');
+                backgroundImage.classList.remove('active');
+                backgroundImage.style.opacity = '1.0';
+                hiddenWaldo.style.opacity = '0.0';
+            }
+        });
+    </script>
+    
+
+</body>
+</html>
